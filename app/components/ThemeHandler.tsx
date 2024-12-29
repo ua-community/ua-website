@@ -14,7 +14,7 @@ function setRandomTheme() {
   const secondary = Math.round(360 * Math.random());
   const lightness = Math.round(100 * Math.random());
   
-  const [secondarylight, dim, secondarydim] = generateLightness(lightness);
+  const { secondarylight, _dim, _secondarydim } = generateLightness(lightness);
 
   const hslPrimary = `hsl(${primary}, 90%, ${lightness}%)`;
   const hslSecondary = `hsl(${secondary}, 90%, ${secondarylight}%)`;

@@ -1,13 +1,13 @@
-import Image from "next/image";
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <main>
-      <a href="/" className="logo">
+      <Link href="/" className="logo">
         <div className="logo-box">
           <span className="logo-text">u&a</span>
         </div>
-      </a>
+      </Link>
 
       <h2 className="site-title">User & Agents</h2>
 
