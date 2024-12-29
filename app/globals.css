@@ -131,7 +131,7 @@ ul li::marker {
 }
 
 p {
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.6;
   color: var(--color-primary);
   transition: color var(--transition-timing);
