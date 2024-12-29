@@ -49,7 +49,7 @@ export default function RootLayout({
         />
         <meta
           property="og:image" 
-          content="https://ua-website-git-main-ankesh-bhartis-projects.vercel.app/api/og"
+          content="https://userandagents.com/api/og"
         />
       </head>
       <body>
