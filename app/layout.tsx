@@ -10,8 +10,12 @@ const ptSans = PT_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ua-website-git-main-ankesh-bhartis-projects.vercel.app'),
   title: 'User & Agents',
   description: 'A community space focused on shaping the future of user-agent systems.',
+  openGraph: {
+    images: '/api/og',
+  },
   themeColor: '#ffffff',
   icons: {
     icon: [
@@ -44,6 +48,10 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+        />
+        <meta
+          property="og:image" 
+          content="https://ua-website-git-main-ankesh-bhartis-projects.vercel.app/api/og"
         />
       </head>
       <body className={`${ptSans.className}`}>
