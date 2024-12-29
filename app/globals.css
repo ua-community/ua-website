@@ -3,19 +3,125 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #000000;
+  --color-background: #ffffff;
+  --selection-background: #2178ff;
+  --selection-color: #ffffff;
+  --transition-timing: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Override any default background colors */
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background) !important;
+  color: var(--color-primary) !important;
+  transition: background-color var(--transition-timing),
+              color var(--transition-timing);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+  padding: 2rem;
+}
+
+::selection {
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
+::-moz-selection {
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
+h1, h2 {
+  color: var(--color-primary);
+  border-bottom: none !important;
+  transition: color var(--transition-timing);
+  margin-bottom: 1rem;
+  padding-bottom: 0 !important;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--color-primary) !important;
+  transition: color var(--transition-timing),
+              opacity 0.3s ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  color: var(--color-primary) !important;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: var(--color-primary) !important;
+}
+
+.logo-box {
+  background-color: var(--color-primary);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-timing);
+}
+
+.logo-text {
+  color: var(--color-background);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color var(--transition-timing);
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.logo:hover {
+  opacity: 0.9;
+  text-decoration: none;
+  color: var(--color-primary) !important;
+}
+
+.site-title {
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+ul li {
+  color: var(--color-primary);
+  transition: color var(--transition-timing);
+}
+
+ul li::marker {
+  color: var(--color-primary);
+  transition: color var(--transition-timing);
 }
