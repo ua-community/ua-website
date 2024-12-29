@@ -4,11 +4,11 @@ import './globals.css'
 import ThemeHandler from './components/ThemeHandler'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://userandagents.com/api/og'),
+  metadataBase: new URL('https://userandagents.com'),
   title: 'User & Agents',
   description: 'A community space focused on shaping the future of user-agent systems.',
   openGraph: {
-    images: '/api/og',
+    images: 'https://userandagents.com/api/og',
   },
   themeColor: '#ffffff',
   icons: {
