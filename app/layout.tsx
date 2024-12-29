@@ -10,7 +10,7 @@ const ptSans = PT_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ua-website-git-main-ankesh-bhartis-projects.vercel.app'),
+  metadataBase: new URL('https://userandagents.com/api/og'),
   title: 'User & Agents',
   description: 'A community space focused on shaping the future of user-agent systems.',
   openGraph: {
