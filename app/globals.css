@@ -27,6 +27,7 @@ body {
   -ms-user-select: auto;
   user-select: auto;
   padding: 2rem;
+  font-family: 'PT Sans', sans-serif;
 }
 
 ::selection {

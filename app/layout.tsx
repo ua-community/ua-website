@@ -1,13 +1,7 @@
 import { Metadata } from 'next'
-import { PT_Sans } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import ThemeHandler from './components/ThemeHandler'
-
-const ptSans = PT_Sans({ 
-  weight: '400',
-  subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://userandagents.com/api/og'),
@@ -49,12 +43,16 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
         />
+        <link 
+          rel="stylesheet" 
+          href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400&display=swap"
+        />
         <meta
           property="og:image" 
           content="https://ua-website-git-main-ankesh-bhartis-projects.vercel.app/api/og"
         />
       </head>
-      <body className={`${ptSans.className}`}>
+      <body>
         <ThemeHandler />
         {children}
         <Script src="/_vercel/insights/script.js" />
