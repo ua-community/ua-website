@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import ThemeHandler from './components/ThemeHandler'
 
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body>
         <ThemeHandler />
         {children}
+        <Analytics />
         <Script src="/_vercel/insights/script.js" />
       </body>
     </html>
