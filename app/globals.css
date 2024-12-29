@@ -109,6 +109,9 @@ a:hover {
 .site-title {
   color: var(--color-primary);
   transition: all 0.3s ease;
+  font-weight: 900;
+  font-size: 1.8rem;
+  margin-bottom: 1em;
 }
 
 ul {
@@ -123,6 +126,13 @@ ul li {
 }
 
 ul li::marker {
+  color: var(--color-primary);
+  transition: color var(--transition-timing);
+}
+
+p {
+  font-weight: 600;
+  line-height: 1.6;
   color: var(--color-primary);
   transition: color var(--transition-timing);
 }
