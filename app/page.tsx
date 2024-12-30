@@ -16,7 +16,7 @@ export default function Home() {
       </p>
 
       <p>
-        The software economy is shifting from a model driven by attention capture to one focused on user intent and purposeful engagement. To enable such an intent driven system, we need user agents to serve as a unified perimeter of devices, platforms, and services maximizing user agency. Browsers, as the only open user agent platform, offer client-side agency, face a key challenge in their limited integration with broader systems—a gap we aim to bridge.
+        The software economy is shifting from a model driven by attention capture to one focused on user intent and purposeful engagement. To enable such an intent driven system, we need user agents to serve as a unified perimeter of devices, platforms, and services maximizing user agency. Browsers, as the only open user-agent platform, face a key challenge due to their limited agency and integration with broader systems—a gap we aim to bridge.
       </p>
 
       <p>
