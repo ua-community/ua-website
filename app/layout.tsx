@@ -61,7 +61,7 @@ export default function RootLayout({
         <ThemeHandler />
         <main>{children}</main>
         
-        <footer className="w-full py-8 mt-auto">
+        <footer className="w-full py-4 mt-auto">
           <div className="max-w-4xl mx-auto px-4">
             <div style={{minHeight: '58px', maxWidth: '240px', margin: '0 auto', width: '100%'}}>
               <Script
