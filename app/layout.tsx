@@ -61,9 +61,9 @@ export default function RootLayout({
         <ThemeHandler />
         <main>{children}</main>
         
-        <footer className="w-full py-4 mt-auto">
+        <footer className="w-full py-2 mt-auto">
           <div className="max-w-4xl mx-auto px-4">
-            <div style={{minHeight: '58px', maxWidth: '240px', margin: '0 auto', width: '100%'}}>
+            <div style={{minHeight: '58px', maxWidth: '240px', margin: '0 auto', width: '100%', marginTop: '-1rem'}}>
               <Script
                 src="https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js"
                 data-button-color="#4B031D"
@@ -73,10 +73,10 @@ export default function RootLayout({
                 strategy="afterInteractive"
               />
             </div>
-            
-            <div className="text-center text-sm text-neutral-600 dark:text-neutral-400">
-              {/* ... */}
-            </div>
+          </div>
+
+          <div style={{ position: 'relative', top: '150px' }} className="text-center text-sm text-neutral-600 dark:text-neutral-400">
+            User and Agents © 2024
           </div>
         </footer>
         <Analytics />
