@@ -75,7 +75,7 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div style={{ position: 'relative', top: '150px' }} className="text-center text-sm text-neutral-600 dark:text-neutral-400">
+          <div style={{ position: 'relative', top: '150px' }} className="text-center text-sm">
             User and Agents © 2024
           </div>
         </footer>
