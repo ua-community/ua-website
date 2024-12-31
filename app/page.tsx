@@ -60,7 +60,7 @@ export default function Home() {
       </ul>
       
       <p>
-        We envision a new browser-like operating environment built on three foundational elements: intent router, machine network, and artifacts. For more resources, check out our <a href="https://uaresearch.notion.site" target="_blank">research</a>, or browse our <a href="https://github.com/ua-community" target="_blank">Github</a>. Join our community on <a href="https://discord.gg/FY6gvcKS6W" target="_blank">Discord</a> or reach out at <a href="mailto:hello@userandagents.com" target="_blank">hello@userandagents.com</a>.
+        We envision a new browser-like operating environment built on three foundational elements: intent router, machine network, and artifacts. For more resources, check out our <a href="https://blog.userandagents.com/" target="_blank">blog</a>, <a href="https://uaresearch.notion.site" target="_blank">research</a>, or browse our <a href="https://github.com/ua-community" target="_blank">Github</a>. Join our community on <a href="https://discord.gg/FY6gvcKS6W" target="_blank">Discord</a> or reach out at <a href="mailto:hello@userandagents.com" target="_blank">hello@userandagents.com</a>.
       </p>
     </main>
   )
