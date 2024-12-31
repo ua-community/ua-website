@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Your Site Title',
+  title: 'User & Agents',
   icons: {
     icon: [
       {
@@ -29,9 +29,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
-  appleWebApp: {
-    title: 'User & Agents',
-  },
 }
 
 export default function Home() {
