@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -59,7 +59,26 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeHandler />
-        {children}
+        <main>{children}</main>
+        
+        <footer className="w-full py-8 mt-auto">
+          <div className="max-w-4xl mx-auto px-4">
+            <div style={{minHeight: '58px', maxWidth: '240px', margin: '0 auto', width: '100%'}}>
+              <Script
+                src="https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js"
+                data-button-color="#4B031D"
+                data-button-text-color="#FFFFFF"
+                data-site="https://blog.userandagents.com/"
+                data-locale="en"
+                strategy="afterInteractive"
+              />
+            </div>
+            
+            <div className="text-center text-sm text-neutral-600 dark:text-neutral-400">
+              {/* ... */}
+            </div>
+          </div>
+        </footer>
         <Analytics />
         <Script src="/_vercel/insights/script.js" />
       </body>
