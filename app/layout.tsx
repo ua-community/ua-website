@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import ThemeHandler from './components/ThemeHandler'
+import ScrollToTop from './components/ScrollToTop'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://userandagents.com'),
@@ -58,6 +59,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="User & Agents" />
       </head>
       <body>
+        <ScrollToTop />
         <ThemeHandler />
         <main>{children}</main>
         
