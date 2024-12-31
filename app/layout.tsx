@@ -30,6 +30,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  other: {
+    'apple-mobile-web-app-title': 'User & Agents'
+  }
 }
 
 export default function RootLayout({
@@ -52,6 +55,7 @@ export default function RootLayout({
           property="og:image" 
           content="https://userandagents.com/api/og"
         />
+        <meta name="apple-mobile-web-app-title" content="User & Agents" />
       </head>
       <body>
         <ThemeHandler />

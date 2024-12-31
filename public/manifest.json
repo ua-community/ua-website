@@ -1,6 +1,6 @@
 {
   "name": "User & Agents",
-  "short_name": "User & Agents",
+  "short_name": "UA",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
