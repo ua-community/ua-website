@@ -66,7 +66,7 @@ export default function RootLayout({
         
         <footer className="w-full py-2 mt-auto">
           <div className="max-w-4xl mx-auto px-4">
-            <div style={{minHeight: '58px', maxWidth: '440px', margin: '0 auto', width: '100%', marginTop: '-1rem'}}>
+            <div style={{minHeight: '58px', maxWidth: '440px', margin: '0 auto', width: '100%', marginTop: '-3rem'}}>
               <Script
                 src="https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js"
                 data-button-color="#161314"
