@@ -3,11 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #000000;
-  --color-background: #ffffff;
-  --selection-background: #2178ff;
-  --selection-color: #ffffff;
-  --transition-timing: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  --background-color: #ffffff;
+  --text-color: #161314;
+  --link-color: #0969da;
+  --link-visited-color: #8250df;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:visited {
+  color: var(--link-visited-color);
 }
 
 /* Override any default background colors */
@@ -73,37 +85,35 @@ a:hover {
   gap: 1rem;
   margin-bottom: 2rem;
   text-decoration: none;
-  color: var(--color-primary) !important;
+  color: var(--text-color) !important;
 }
 
 .logo-box {
-  background-color: var(--color-primary);
+  background-color: #000000;
   width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--transition-timing);
 }
 
 .logo-text {
-  color: var(--color-background);
+  color: #ffffff;
   font-size: 1.2rem;
   font-weight: bold;
   text-decoration: none;
-  transition: color var(--transition-timing);
 }
 
 .brand-text {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--color-primary);
+  color: var(--text-color);
 }
 
 .logo:hover {
   opacity: 0.9;
   text-decoration: none;
-  color: var(--color-primary) !important;
+  color: var(--text-color) !important;
 }
 
 .site-title {
