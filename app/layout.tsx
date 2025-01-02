@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import ThemeHandler from './components/ThemeHandler'
 import ScrollToTop from './components/ScrollToTop'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://userandagents.com'),
@@ -83,6 +84,7 @@ export default function RootLayout({
         </footer>
         <Analytics />
         <Script src="/_vercel/insights/script.js" />
+        <SpeedInsights />
       </body>
     </html>
   )
