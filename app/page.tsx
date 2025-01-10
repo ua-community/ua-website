@@ -62,7 +62,7 @@ export default function Home() {
       <p>
         We envision a new browser-like operating environment built on three foundational elements: intent router, machine network, and artifacts. For more resources, check out our <a href="https://uaresearch.notion.site" target="_blank">research</a>, or browse our <a href="https://github.com/ua-community" target="_blank">Github</a>.  
         
-        Chat with us on <a href="https://discord.gg/mtEwuEZQ5x" target="_blank">Discord</a> or subscribe to the mailing list of our <a href="https://blog.userandagents.com/" target="_blank">blog</a> below.
+        Chat with us on <a href="https://discord.gg/mtEwuEZQ5x" target="_blank">Discord</a> or subscribe to our community mailing list below.
       </p>
     </main>
   )
