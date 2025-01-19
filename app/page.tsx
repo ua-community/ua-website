@@ -51,7 +51,7 @@ export default function Home() {
       </p>
 
       <p>
-        To that end, our community explores and prototypes projects at the intersection of:
+      To that end, we collaborate with organizations and communities that are eager to address problems at the intersection of:
       </p>
       <ul>
         <li>Web platform transition</li>
