@@ -80,7 +80,7 @@ export default function RootLayout({
           </div>
 
           <div style={{ position: 'relative', top: '150px', marginBottom: '2rem' }} className="text-center text-sm">
-            User and Agents © {new Date().getFullYear()}
+          © {new Date().getFullYear()} User and Agents
           </div>
         </footer>
         <Analytics />
