@@ -60,7 +60,7 @@ export default function Home() {
       </ul>
       
       <p>
-      Our vision is a new weblike operating environment, grounded in our fundamental exploratory research across these domains. Check out our <a href="https://github.com/ua-community" target="_blank">Github</a> or chat with us on <a href="https://discord.gg/mtEwuEZQ5x" target="_blank">Discord</a> or subscribe to our community mailing list below.
+      Our vision is a new weblike operating environment, grounded in our fundamental exploratory research across these domains. Check out our <a href="https://github.com/ua-community" target="_blank">Github</a> or chat with us on <a href="https://link.userandagents.com/discord" target="_blank">Discord</a> or subscribe to our community mailing list below.
       </p>
     </main>
   )
