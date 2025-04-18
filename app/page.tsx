@@ -60,7 +60,11 @@ export default function Home() {
       </ul>
       
       <p>
-      Our vision is a new weblike operating environment, grounded in our fundamental exploratory research across these domains. Check out our <a href="https://github.com/ua-community">Github</a> or chat with us on <a href="https://go.userandagents.com/discord">Discord</a> or subscribe to our community mailing list below. Back us on Open Collective at <a href="https://opencollective.com/user-and-agents">https://opencollective.com/user-and-agents</a>.
+      Our vision is a new weblike operating environment, grounded in our fundamental exploratory research across these domains. Check out our <a href="https://github.com/ua-community">Github</a> or chat with us on <a href="https://go.userandagents.com/discord">Discord</a> or subscribe to our community mailing list below. 
+      </p>
+
+    <p>
+      We also accept donations via <a href="https://opencollective.com/user-and-agents">Open Collective</a> to cover ongoing expenses such as Discord and bot hosting, in-person events, and potentially future initiatives like community stewardship or research fellowships. Feel free to reach out to us with ideas.”
       </p>
     </main>
   )
