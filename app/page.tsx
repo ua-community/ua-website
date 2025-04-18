@@ -64,7 +64,7 @@ export default function Home() {
       </p>
 
     <p>
-      We also accept donations via <a href="https://opencollective.com/user-and-agents">Open Collective</a> to cover ongoing expenses such as Discord and bot hosting, in-person events, and potentially future initiatives like community stewardship or research fellowships. Feel free to reach out to us with ideas.”
+      We also accept donations via <a href="https://opencollective.com/user-and-agents">Open Collective</a> to cover ongoing expenses such as Discord and bot hosting, in-person events, and potentially future initiatives like community stewardship or research fellowships. Feel free to reach out to us with ideas.
       </p>
     </main>
   )
