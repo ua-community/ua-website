@@ -57,7 +57,6 @@ export default function Home() {
       </ul>
       
       <p>
-        Our vision is a new web-like operating environment, grounded in our fundamental exploratory research across these domains.
         Check out our <a href="https://github.com/ua-community">Github</a> or chat with us on <a href="https://go.userandagents.com/discord">Discord</a> or subscribe to our community mailing list below.
       </p>
 
