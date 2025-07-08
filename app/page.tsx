@@ -36,35 +36,34 @@ export default function Home() {
     <main>
       <Link href="/" className="logo">
         <div className="logo-box">
-          <span className="logo-text">u&a</span>
+          <span className="logo-text">u&amp;a</span>
         </div>
       </Link>
 
-      <h2 className="site-title">User & Agents</h2>
+      <h2 className="site-title">User &amp; Agents</h2>
 
       <p>
-        We are a community space focused on shaping the future of user-agent systems. Our goal is to empower individuals with software that enables them to create their own agency.
+        We are a community focused on shaping the future of user-agent systems.
+        Our goal is to empower people by designing and building software that provides agency, control, and choice in our digital lives.
       </p>
 
       <p>
-        The software economy is shifting from a model driven by attention capture to one focused on user intent and purposeful engagement. To enable such an intent driven system, we need user agents to serve as a unified perimeter of devices, platforms, and services maximizing user agency. Browsers, as the only open user-agent platform, face a key challenge due to their limited origin policy and integration with broader systems—a gap we aim to bridge.
-      </p>
-
-      <p>
-      To that end, we collaborate with organizations and communities that are eager to address challenges at the intersection of:
+        We are exploring three areas we believe to be foundational to the future of user-agent systems:
       </p>
       <ul>
-        <li>Web platform transition</li>
-        <li>End-user programming</li>
-        <li>On-device AI & cognitive architectures</li>
+        <li>Web platform change - rethinking browsers, capabilities, protocols</li>
+        <li>End-user programming - meta-applications for adaptive/emergent/ephemeral software</li>
+        <li>User-centered AI - private and local cognitive augmentation and architectures</li>
       </ul>
       
       <p>
-      Our vision is a new weblike operating environment, grounded in our fundamental exploratory research across these domains. Check out our <a href="https://github.com/ua-community">Github</a> or chat with us on <a href="https://go.userandagents.com/discord">Discord</a> or subscribe to our community mailing list below. 
+        Check out our <a href="https://github.com/ua-community">Github</a> or chat with us on <a href="https://go.userandagents.com/discord">Discord</a> or subscribe to our community mailing list below.
       </p>
 
-    <p>
-      We also accept donations via <a href="https://opencollective.com/user-and-agents">Open Collective</a> to cover ongoing expenses such as Discord and bot hosting, in-person events, and potentially future initiatives like community stewardship or research fellowships. Feel free to <a href="mailto:hello@userandagents.com">reach out</a> to us with ideas.
+      <p>
+        We are a non-profit community, and accept donations via <a href="https://opencollective.com/user-and-agents">Open Collective</a>.
+        All funds go to expenses such as the community Discord and bot hosting, in-person events, and potentially future initiatives such as community stewardship stipends or research fellowships.
+        Join the Discord and reach out to us with ideas!
       </p>
     </main>
   )
