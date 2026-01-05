@@ -146,3 +146,136 @@ p {
   color: var(--color-primary);
   transition: color var(--transition-timing);
 }
+
+/* Top Navigation */
+.top-nav {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.discord-button {
+  background-color: #5865F2;
+  color: #ffffff !important;
+}
+
+.discord-button:hover {
+  background-color: #4752C4;
+  opacity: 1 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.35);
+  color: #ffffff !important;
+}
+
+.sponsor-button {
+  background-color: #ffffff;
+  color: #000000 !important;
+  border: 1px solid #e0e0e0;
+}
+
+.sponsor-button:hover {
+  background-color: #f5f5f5;
+  opacity: 1 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #000000 !important;
+}
+
+.nav-button:active {
+  transform: translateY(0);
+}
+
+.nav-button svg {
+  flex-shrink: 0;
+}
+
+.oc-icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+/* Newsletter Container */
+.newsletter-container {
+  min-height: 58px;
+  max-width: 440px;
+  margin: -3rem auto 0;
+  width: 100%;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .top-nav {
+    top: 0.75rem;
+    right: 0.75rem;
+    gap: 0.4rem;
+  }
+  
+  .nav-button {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  
+  .nav-button span {
+    display: none;
+  }
+  
+  .nav-button svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .newsletter-container {
+    margin-top: -2rem;
+  }
+  
+  .footer-copyright {
+    margin-top: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .nav-button {
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .newsletter-container {
+    margin-top: -1.5rem;
+  }
+  
+  .footer-copyright {
+    margin-top: 5rem;
+  }
+}
