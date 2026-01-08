@@ -123,8 +123,9 @@ export default function Home() {
 
       <section className="content-section">
         <p>
-          Check out our <a href="https://github.com/ua-community">GitHub</a> or 
-          chat with us on <a href="https://go.userandagents.com/discord">Discord</a>.
+          Check out our <a href="https://github.com/ua-community">GitHub</a>, 
+          chat with us on <a href="https://go.userandagents.com/discord">Discord</a>, or 
+          follow our members with this <a href="https://go.userandagents.com/bluesky">Bluesky starter pack list</a>.
         </p>
 
         <p>
