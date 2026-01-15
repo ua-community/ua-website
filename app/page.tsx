@@ -125,7 +125,7 @@ export default function Home() {
         <p>
           Check out our <a href="https://github.com/ua-community">GitHub</a>, 
           chat with us on <a href="https://go.userandagents.com/discord">Discord</a>, or 
-          follow our members with this <a href="https://go.userandagents.com/bluesky">Bluesky starter pack list</a>.
+          follow our members with this <a href="https://bsky.app/profile/did:plc:zjbq26wybii5ojoypkso2mso/lists/3ll5u637k372f">Bluesky starter pack list</a>.
         </p>
 
         <p>
