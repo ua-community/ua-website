@@ -2,7 +2,8 @@ import { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
-import ThemeHandler from './components/ThemeHandler'
+import ThemeProvider from './components/ThemeProvider'
+import ThemeSwitcher from './components/ThemeSwitcher'
 import ScrollToTop from './components/ScrollToTop'
 import NewsletterForm from './components/NewsletterForm'
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -83,6 +84,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <Script id="ua-theme-init" strategy="beforeInteractive">
+          {`(function(){try{var k='ua-theme';var t=localStorage.getItem(k);if(t!=='light'&&t!=='dark'&&t!=='system')t='system';document.documentElement.dataset.theme=t;var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('theme-dark',d);document.documentElement.style.colorScheme=d?'dark':'light';}catch(e){document.documentElement.dataset.theme='system';document.documentElement.classList.remove('theme-dark');document.documentElement.style.colorScheme='light';}})();`}
+        </Script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link 
@@ -92,23 +96,25 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="User & Agents" />
       </head>
       <body>
-        <ScrollToTop />
-        <ThemeHandler />
+        <ThemeProvider>
+          <ScrollToTop />
 
-        <main className="page-container">
-          {children}
-          
-          <section className="newsletter-section">
-            <p className="newsletter-label">Subscribe to our mailing list</p>
-            <NewsletterForm />
-          </section>
-        </main>
-        
-        <footer className="site-footer">
+          <main className="page-container">
+            {children}
+
+            <section className="newsletter-section">
+              <p className="newsletter-label">Subscribe to our mailing list</p>
+              <NewsletterForm />
+            </section>
+          </main>
+
+          <footer className="site-footer">
             <p className="footer-copyright">
               © {new Date().getFullYear()} User &amp; Agents
             </p>
-        </footer>
+            <ThemeSwitcher />
+          </footer>
+        </ThemeProvider>
         
         <Analytics />
         <Script src="/_vercel/insights/script.js" />
