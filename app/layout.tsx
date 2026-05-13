@@ -11,12 +11,46 @@ export const viewport: Viewport = {
   themeColor: '#faf9f7',
 }
 
+const siteDescription =
+  'A community space focused on shaping the future of user-agent systems.'
+
+/** Canonical origin for absolute metadata URLs (og:image, etc.). Override in Vercel env if needed. */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://userandagents.org'
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://userandagents.com'),
+  metadataBase: new URL(siteUrl),
   title: 'User & Agents',
-  description: 'A community space focused on shaping the future of user-agent systems.',
+  description: siteDescription,
   openGraph: {
-    images: 'https://userandagents.com/api/og',
+    type: 'website',
+    url: '/',
+    siteName: 'User & Agents',
+    title: 'User & Agents',
+    description: siteDescription,
+    locale: 'en_US',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'User & Agents',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'User & Agents',
+    description: siteDescription,
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'User & Agents',
+      },
+    ],
   },
   icons: {
     icon: [
@@ -54,10 +88,6 @@ export default function RootLayout({
         <link 
           rel="stylesheet" 
           href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Grotesk:wght@500;600;700&display=swap"
-        />
-        <meta
-          property="og:image" 
-          content="https://userandagents.com/api/og"
         />
         <meta name="apple-mobile-web-app-title" content="User & Agents" />
       </head>
