@@ -5,7 +5,6 @@ import './globals.css'
 import ThemeProvider from './components/ThemeProvider'
 import ThemeSwitcher from './components/ThemeSwitcher'
 import ScrollToTop from './components/ScrollToTop'
-import NewsletterForm from './components/NewsletterForm'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const viewport: Viewport = {
@@ -101,11 +100,6 @@ export default function RootLayout({
 
           <main className="page-container">
             {children}
-
-            <section className="newsletter-section">
-              <p className="newsletter-label">Subscribe to our mailing list</p>
-              <NewsletterForm />
-            </section>
           </main>
 
           <footer className="site-footer">
