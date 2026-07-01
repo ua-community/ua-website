@@ -65,6 +65,15 @@ export default function Home() {
             <span className="top-nav-text">Bluesky</span>
           </a>
           <a
+            href="https://userandagents.leaflet.pub"
+            className="top-nav-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="top-nav-icon top-nav-icon-mask" aria-hidden />
+            <span className="top-nav-text">Blog</span>
+          </a>
+          <a
             href="https://go.userandagents.org/discord"
             className="top-nav-link"
             target="_blank"
