@@ -178,6 +178,21 @@ export default function Home() {
           All funds go towards community Discord hosting, in-person events, and research fellowships.
         </p>
       </section>
+
+      <section className="content-section faq-section" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">FAQ</h2>
+
+        <div className="faq-item">
+          <h3>Why Discord?</h3>
+          <p>
+            We are using the tools that help people find each other today. Discord is not
+            our ideal long-term home, but it is familiar, accessible, and easy for new
+            members to join. We are actively exploring better, more open alternatives
+            like <a href="https://roomy.space">Roomy</a>. For now, come in, help shape
+            the community, and help us build toward something better.
+          </p>
+        </div>
+      </section>
     </>
   )
 }
