@@ -1,11 +1,9 @@
 import { Metadata, Viewport } from 'next'
 import Script from 'next/script'
-import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import ThemeProvider from './components/ThemeProvider'
 import ThemeSwitcher from './components/ThemeSwitcher'
 import ScrollToTop from './components/ScrollToTop'
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const viewport: Viewport = {
   themeColor: '#faf9f7',
@@ -14,9 +12,9 @@ export const viewport: Viewport = {
 const siteDescription =
   'A community space focused on shaping the future of user-agent systems.'
 
-/** Canonical origin for absolute metadata URLs (og:image, etc.). Override in Vercel env if needed. */
+/** Canonical origin for absolute metadata URLs. Override at build time if needed. */
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://userandagents.org'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.userandagents.org'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -109,10 +107,6 @@ export default function RootLayout({
             <ThemeSwitcher />
           </footer>
         </ThemeProvider>
-        
-        <Analytics />
-        <Script src="/_vercel/insights/script.js" />
-        <SpeedInsights />
       </body>
     </html>
   )

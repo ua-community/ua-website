@@ -1,7 +1,8 @@
 import { ImageResponse } from 'next/og';
-// App router includes @vercel/og.
-// No need to install it.
- 
+
+// The image has no request-specific content, so generate it during the build.
+export const dynamic = 'force-static';
+
 export async function GET() {
   return new ImageResponse(
     (
