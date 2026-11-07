@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/api/og',
+        url: '/og.png',
         width: 1200,
         height: 630,
         alt: 'User & Agents',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: '/api/og',
+        url: '/og.png',
         width: 1200,
         height: 630,
         alt: 'User & Agents',

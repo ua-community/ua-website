@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-// The image has no request-specific content, so generate it during the build.
+// Export a PNG file so static hosts serve the correct image content type.
 export const dynamic = 'force-static';
 
 export async function GET() {

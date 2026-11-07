@@ -1,93 +1,84 @@
 # User & Agents website
 
-The community website is built with Next.js and deployed as static assets on Cloudflare Workers.
+The community website is built with Next.js, exported as static files, and deployed through GitHub Actions to GitHub Pages.
 
-- Production domain: <https://www.userandagents.org>
-- Cloudflare deployment: <https://ua-website.feynon.workers.dev>
-- Worker: `ua-website`
+- Website: <https://www.userandagents.org>
+- Repository: <https://github.com/ua-community/ua-website>
+- Deployment settings: <https://github.com/ua-community/ua-website/settings/pages>
+- Deployment runs: <https://github.com/ua-community/ua-website/actions/workflows/pages.yml>
 
 ## Registrar and DNS handoff
 
-These instructions are for the person who manages `userandagents.org` at its registrar. They apply to any registrar that supports custom nameservers and DNSSEC settings; menu names vary by provider.
+These instructions are for whoever manages `userandagents.org` at its registrar or DNS provider. Menu names vary, but the record values are the same at every provider. Domain registration, nameservers, and DNSSEC stay with the existing providers. This migration only changes the website's DNS records; the previous Cloudflare nameserver instructions no longer apply.
 
-The domain stays registered and renewed with its current registrar. This deployment uses Cloudflare as the authoritative DNS provider, so DNS records will be managed in Cloudflare after the switch. The registrar owner changes the domain's nameserver delegation. A CNAME pointing to the `workers.dev` preview address does not activate this Workers Custom Domain setup. See [Cloudflare's Custom Domains requirements](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+### 1. Confirm GitHub Pages is ready
 
-### Access and responsibilities
+The repository maintainer should check **Settings → Pages**:
 
-| Maintainer | Access needed | Responsibilities |
+- **Build and deployment → Source:** GitHub Actions.
+- **Custom domain:** `www.userandagents.org`.
+- The latest **GitHub Pages** workflow on `main` has a successful deployment.
+
+Save the custom domain in GitHub before changing DNS. With this Actions workflow, GitHub stores the custom domain in the repository settings; a `CNAME` file in the source is not required. The existing `www` address remains the primary address, and GitHub redirects the apex domain to it once both DNS records are correct.
+
+### 2. Back up the current website records
+
+Open the domain's **DNS records**, **Manage DNS**, or **Zone editor**. If the registrar uses another company for DNS hosting, make these changes at that DNS provider instead.
+
+Save the current apex (`@`) and `www` records and any website forwarding settings for rollback. Preserve unrelated records, including email, SPF, DKIM, DMARC, verification TXT records, and the `go`, `blog`, and `_atproto` subdomains.
+
+### 3. Point the website to GitHub Pages
+
+Replace the old website records with these values. A TTL of **Auto**, the provider's default, or **300 seconds** is suitable.
+
+| Type | Host / Name | Value / Target |
 | --- | --- | --- |
-| Domain maintainer | The registrar account and the current DNS provider, if separate | Back up existing settings, change nameservers, and manage DNSSEC/DS records at the registrar. |
-| Deployment maintainer | The project's Cloudflare account and GitHub repository | Prepare the Cloudflare DNS zone, preserve existing services, confirm Worker domains and certificates, and verify the deployment. |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `ua-community.github.io` |
 
-One person can perform both roles. If the domain maintainer has no Cloudflare access, coordinate the steps below with the deployment maintainer. Registrar access alone is not enough to complete the preparation and verification.
+`@` means the root domain, `userandagents.org`. Some providers use a blank field or the full domain instead. Enter the CNAME target as a hostname, without `https://`, a path, or the repository name.
 
-### 1. Prepare Cloudflare before changing the registrar
+Remove conflicting website A, AAAA, ALIAS, ANAME, or CNAME records for the apex and `www`, including old Vercel destinations. Keep apex TXT and MX records. Disable registrar website forwarding for these two hostnames so GitHub can handle the redirect. If the DNS provider offers a proxy option, use **DNS only** for the website records.
 
-The deployment maintainer must confirm all of the following:
+IPv6 is optional. If you want it, use all four AAAA records below alongside the A records. Otherwise, remove any old website AAAA records so IPv6 visitors do not reach the previous host.
 
-- `userandagents.org` exists as a DNS zone in the same Cloudflare account as the `ua-website` Worker. Start at the [project's Cloudflare account](https://dash.cloudflare.com/e531d96572bcfc4edacf957949c536cd). If the zone is missing or inaccessible, resolve that before changing nameservers.
-- The [Cloudflare preview](https://ua-website.feynon.workers.dev) works, and both `userandagents.org` and `www.userandagents.org` are attached under the Worker's **Settings → Domains & Routes**. Cloudflare manages the website DNS records through these Custom Domains.
-- The zone's redirect rules send the apex domain to `https://www.userandagents.org`, preserve the path and query string, and redirect HTTP requests for `www` to HTTPS.
-- The assigned nameservers in the zone's **Overview** match the values to be supplied to the registrar owner. Confirm them again if the zone or Cloudflare account has changed.
+| Type | Host / Name | Value / Target |
+| --- | --- | --- |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
 
-### 2. Back up and preserve the existing DNS records
+These values come from [GitHub's custom-domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Follow that page if GitHub changes its published addresses.
 
-The domain maintainer should export the full DNS zone, or save every record if export is unavailable. Also save the current nameservers, DNSSEC settings, website records, and any provider-managed forwarding rules. The registrar and DNS provider may be different companies.
+### 4. Enable HTTPS and verify
 
-Give the record export to the deployment maintainer, who must compare it with [Cloudflare's DNS records](https://dash.cloudflare.com/e531d96572bcfc4edacf957949c536cd/userandagents.org/dns/records) and copy anything missing. Preserve all records used by other services, including email records, DKIM selectors, SPF, DMARC, verification TXT records, SRV records, and subdomain delegations. For this domain, check `go.userandagents.org`, `blog.userandagents.org`, and `_atproto.userandagents.org` in particular. Use the current DNS provider's values as the source of truth.
+Tell the repository maintainer when the records are saved. They should check **Settings → Pages** for a successful DNS check and certificate, then enable **Enforce HTTPS** when available. DNS propagation and certificate issuance may take up to 24 hours. Existing restrictive CAA records may need to permit `letsencrypt.org`; see [GitHub's HTTPS troubleshooting guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https).
 
-Only the website records for the apex domain and `www` are being replaced by Worker Custom Domains. Keep unrelated services at their existing destinations and use DNS-only mode where their providers require it. Cloudflare's automatic scan can miss records, and registrar forwarding features may need separate recreation. Finish this comparison before switching nameservers. See [Cloudflare's DNS preparation guidance](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#2-review-your-dns-records).
-
-### 3. Remove the old DNSSEC delegation, if present
-
-At the registrar, open the domain's **DNSSEC**, **DS records**, or similarly named settings. If a DS record is published for the current DNS provider, remove it using the registrar's controls; some registrars label this action **Disable DNSSEC**. If no DS record is published, skip this step.
-
-Wait for the removal to reach the parent registry and for cached DS records to expire before changing nameservers. Have the deployment maintainer check public DNS resolvers for a successful DS lookup with no records; a timeout or `SERVFAIL` is not a successful check. If DNS signing is controlled separately at the old DNS host, keep it working until the old DS records have expired. An old DS record paired with new nameservers can make the domain unreachable. Follow the [DNSSEC migration guidance](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#33-turn-off-dnssec) if the registrar requires additional steps.
-
-### 4. Change the domain's nameservers at the registrar
-
-Open `userandagents.org` in the registrar's domain management area. Look for **Nameservers**, **Custom nameservers**, or **Use external DNS**. Change the domain's nameserver delegation there; adding NS records in the old DNS record editor does not change registrar delegation.
-
-The nameservers recorded for this deployment are:
-
-| Registrar field | Value |
-| --- | --- |
-| Nameserver 1 | `jobs.ns.cloudflare.com` |
-| Nameserver 2 | `tara.ns.cloudflare.com` |
-
-Use these values only after the deployment maintainer confirms that they match the zone's current Cloudflare assignment. Replace the entire old nameserver list with the assigned pair and leave any additional nameserver fields empty. Enter the hostnames exactly; no IP addresses or glue records are required for these Cloudflare nameservers. Save the change and complete any confirmation requested by the registrar.
-
-If these controls are unavailable, ask the registrar's support team to update the authoritative nameservers for `userandagents.org` to the confirmed pair. Domain registration and renewal remain with that registrar.
-
-### 5. Verify the switch together
-
-The domain maintainer should send the deployment maintainer the change time and the nameservers entered. The deployment maintainer then checks that public DNS returns the assigned nameservers, Cloudflare marks the zone **Active**, and HTTPS certificates for both website hostnames are valid. DNS caches and certificate issuance can take time; saving the registrar form alone does not confirm completion.
+Verify these URLs after the switch:
 
 | Check | Expected result |
 | --- | --- |
-| `https://www.userandagents.org` | The User & Agents homepage loads without certificate errors. |
-| `https://userandagents.org/api/og?check=1` | Redirects to the same path and query on `https://www.userandagents.org`. |
-| `http://www.userandagents.org` | Redirects to HTTPS. |
-| `https://www.userandagents.org/api/og` | Returns the 1200 × 630 PNG social image. |
+| `https://www.userandagents.org` | Homepage loads, including styling and theme controls. |
+| `https://userandagents.org/?check=1` | Redirects to `https://www.userandagents.org/?check=1`. |
+| `http://www.userandagents.org` | Redirects to HTTPS once enforcement is enabled. |
+| `https://www.userandagents.org/og.png` | Returns the 1200 × 630 PNG social image. |
 | `https://www.userandagents.org/migration-check-missing-page` | Returns the site's 404 page with HTTP status 404. |
-| `https://go.userandagents.org/discord` | The community invitation still works. |
-| Other existing services | Email, verification records, and other subdomains still work where configured. |
-
-### 6. Enable DNSSEC with Cloudflare's values
-
-After activation and successful verification, the deployment maintainer enables DNSSEC for the Cloudflare zone and supplies its new DS details. The domain maintainer enters the **key tag**, **algorithm**, **digest type**, and **digest** in the registrar's DNSSEC controls, or follows the registrar's supported automatic process. Use Cloudflare's new values rather than the saved DS record from the previous provider, and have the deployment maintainer verify DNSSEC validation afterward. See [Cloudflare's DNSSEC instructions](https://developers.cloudflare.com/dns/dnssec/).
+| `https://go.userandagents.org/discord` | Community invitation still works. |
+| Other services | Existing email and other subdomains still work where configured. |
 
 ### Ongoing maintenance and rollback
 
-Manage future DNS record changes in Cloudflare. Keep domain renewal and registrar-level nameserver/DNSSEC controls at the registrar. Website updates continue through GitHub as described below; normal code deployments do not require registrar changes.
+Keep managing domain renewal, DNS records, nameservers, and DNSSEC with the existing providers. Website updates deploy automatically after changes reach `main`; normal updates need no DNS changes.
 
-`vercel.json` disables future automatic Vercel deployments. Retain the existing Vercel deployment and the DNS backup until the switch is verified.
-
-If the website needs to return to Vercel while DNS stays on Cloudflare, coordinate with the deployment maintainer: remove the website's Custom Domain declarations from `cloudflare.config.ts` and its Worker attachments, restore the saved Vercel website records in Cloudflare, and adjust the website redirect rules if needed. Removing the declarations prevents a later deployment from reattaching the domains. Leave unrelated DNS records intact. Returning all DNS hosting to the old provider is a separate change that requires reviewing nameservers and DNSSEC together.
+For a content rollback, revert the relevant Git commit and let the Pages workflow deploy again. To return hosting to the previous provider, restore the saved website DNS records, including the previous IPv6 settings, and verify that the old deployment is available. Retain the previous deployment until the Pages switch is verified. `vercel.json` disables new automatic Vercel deployments.
 
 ## Development
 
-Use Node.js 22.23.0 (see `.nvmrc`) and npm. The Cloudflare CLI does not support Bun.
+Use Node.js 22.23.0 (see `.nvmrc`) and npm.
 
 ```sh
 nvm use
@@ -99,27 +90,15 @@ npm run dev
 
 ```sh
 npm run build
-npm run deploy:check
 npm start
 ```
 
-Next.js exports the website into `out/`. The Cloudflare Vite plugin packages those files, unchanged, into `.cloudflare/output/v0/`. The preview runs the packaged site in Cloudflare's local runtime.
+The build exports the website into `out/`. The preview serves those files at <http://127.0.0.1:3000>. The social image is generated as `out/og.png` at build time, so Pages can serve it with the correct image type. GitHub Pages uses `out/404.html` for missing pages.
 
-The `/api/og` social image is generated at build time. `public/_headers` preserves its PNG content type and applies immutable caching to Next.js's versioned assets. Missing routes return the exported 404 page.
-
-No runtime secrets or server are required. `NEXT_PUBLIC_SITE_URL` optionally overrides the metadata origin at build time; its default is `https://www.userandagents.org`.
+No runtime server or deployment secret is needed. `NEXT_PUBLIC_SITE_URL` optionally overrides the metadata origin at build time; it defaults to `https://www.userandagents.org`. The site is built for the root of its custom domain.
 
 ## Deployment
 
-The [Cloudflare workflow](.github/workflows/cloudflare.yml) builds and validates pull requests. Pushes to `main` build, validate, and deploy that same output. It can also be run manually from GitHub Actions on `main`.
+The [GitHub Pages workflow](.github/workflows/pages.yml) builds pull requests. Pushes to `main` build, upload `out/`, and deploy that exact artifact to the `github-pages` environment. To redeploy manually, open the workflow's **Run workflow** menu and choose `main`.
 
-The repository secret `CLOUDFLARE_API_TOKEN` authenticates deployment. Its permissions are Workers Scripts Write for the configured account, plus Zone Read and Workers Routes Write for `userandagents.org` only. Keep the token in GitHub secrets or a local environment variable, never in source control.
-
-To deploy locally, sign in once and deploy:
-
-```sh
-npx cf auth login
-npm run deploy
-```
-
-`cloudflare.config.ts` declares the Worker and its domains. Redirect rules are managed separately in the Cloudflare zone; verify them using the registrar and DNS handoff above.
+Deployment uses GitHub's built-in workflow authentication with `pages: write` and `id-token: write` permissions. The former Cloudflare workflow, build tools, and deployment token are no longer required.
