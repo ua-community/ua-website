@@ -167,6 +167,12 @@ export default function Home() {
 
       <section className="content-section">
         <p>
+          Since our founding in late 2024, we have hosted satellite events in Berlin,
+          Bangkok, and San Francisco. We are also planning an event in Bengaluru in
+          the near future.
+        </p>
+
+        <p>
           Check out our <a href="https://github.com/ua-community">GitHub</a>, 
           chat with us on <a href="https://go.userandagents.org/discord">Discord</a>, or 
           follow us on <a href="https://bsky.app/profile/userandagents.org">Bluesky</a>.
